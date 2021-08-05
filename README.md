@@ -5,7 +5,7 @@ mini-project for split screen application by python
 Project Member: slamon-love, rmptgw
 
 # Project Purpose
-###1. make the screen spliter 
+### 1. make the screen spliter 
  1) make GUI for Application
  2) connection to each Page
  3) auto start when ms-win is starting
