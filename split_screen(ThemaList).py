@@ -1,6 +1,7 @@
 import sys
 from PyQt5.QtWidgets import *
 from PyQt5 import uic
+from PyQt5.QtWidgets import QListWidget
 
 #UI파일 연결
 #단, UI파일은 Python 코드 파일과 같은 디렉토리에 위치해야한다.
@@ -10,22 +11,55 @@ form_class = uic.loadUiType("ThemaListUI.ui")[0]
 class WindowClass(QMainWindow, form_class) :
     def __init__(self) :
         super().__init__()
-        self.ThemaListUI(self)
+        # self.setupUi(self)
+        self.initUI()
+        # self.setGeometry(803, 300, 257, 322)
 
-        addbtn = QPushButton(self)
+    def initUI(self):
+        #리스트 위젯 추가
+        # themlist = QListWidget(self)
+        # themlist.resize(251, 270)
+        #버튼 추가
+        addbtn = QPushButton('추가', self)
+        addbtn.setCheckable(True)
+        addbtn.toggle()
+        
+        delbtn = QPushButton('삭제', self)
+        delbtn.setCheckable(True)
+        delbtn.toggle()
+        
+       
+
+        #레이아웃
+        hbox = QHBoxLayout()
+        hbox.addWidget(addbtn)
+        hbox.addStretch(1)
+        hbox.addWidget(delbtn)
+        # hbox.addStretch(3)
+        # hbox.addWidget(optbtn)
+
+        # vbox = QVBoxLayout()
+        # vbox.addWidget(themlist)
+        # vbox.addStretch(1)
+        # vbox.addLayout(hbox)
+        
+        # self.setLayout(vbox)
+        self.setLayout(hbox)
+        self.setGeometry(803, 300, 257, 322)
         self.show()
+       
 
-        self.addbtn.clicked.connect(self.addbtnFunction)
-        self.dellbtn.clicked.connect(self.dellbtnFunction)
-        self.optbtn.clicked.connect(self.optbtnFunction)
+    #     self.addbtn.clicked.connect(self.addbtnFunction)
+    #     self.dellbtn.clicked.connect(self.dellbtnFunction)
+    #     self.optbtn.clicked.connect(self.optbtnFunction)
         
 
-    def addbtnFuntion(self):
-        print("add")
-    def dellbtnFuntion(self):
-        print("dell")
-    def optbtnFuntion(self):
-        print("option")
+    # def addbtnFuntion(self):
+    #     print("add")
+    # def dellbtnFuntion(self):
+    #     print("dell")
+    # def optbtnFuntion(self):
+    #     print("option")
 
 if __name__ == "__main__" :
     #QApplication : 프로그램을 실행시켜주는 클래스
