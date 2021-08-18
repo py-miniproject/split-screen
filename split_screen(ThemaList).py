@@ -1,4 +1,5 @@
 import sys
+from PyQt5.QtGui import QStandardItem, QStandardItemModel
 from PyQt5.QtWidgets import *
 from PyQt5 import uic
 # from PyQt5.QtWidgets import QListWidget, QHBoxLayout, QVBoxLayout
@@ -15,24 +16,47 @@ class WindowClass(QWidget, form_class) :
         # self.setupUi(self)
         self.initUI()
         self.setGeometry(803, 300, 257, 322)
+    
+        #리스트 위젯 이벤트
+        # self.themlist.ItemClicked.connect(self.clickedItem)
+
+        # self.addbtn.clikked.connect(self.add_list)
 
 
     def initUI(self):
-        #리스트 위젯 추가
+        #콤보박스
+        themcomb = QComboBox(self)
+ 
+        # #리스트 위젯
         themlist = QListWidget(self)
         themlist.resize(251, 300)
-        #버튼 추가
+        deftlst = ["테마1", "테마2", "테마3"]
+        themlist.addItems(deftlst)
+        
+
+        # model = QStandardItemModel()
+        # for t in theme:
+        #     model.appendRow(QStandardItem(t))
+        # themlist.setModel(model)
+
+        
+
+        
+        #버튼
         addbtn = QPushButton('추가', self)
         addbtn.setCheckable(True)
-        addbtn.toggle()
+        
+
         
         delbtn = QPushButton('삭제', self)
         delbtn.setCheckable(True)
-        delbtn.toggle()
+        # self.delbtn.clikked.connect(self.del_list)
+        
 
         optbtn = QPushButton('설정', self)
         optbtn.setCheckable(True)
-        optbtn.toggle()
+        # self.optbtn.clikked.connect(self.option)
+        
        
 
         #레이아웃
@@ -47,11 +71,13 @@ class WindowClass(QWidget, form_class) :
         vbox = QVBoxLayout()
         vbox.addWidget(themlist)
         vbox.addLayout(hbox)
+        vbox.addWidget(themcomb)
         
         
         self.setLayout(vbox)
         # self.setLayout(hbox)
         self.show()
+    
        
 
     #     self.addbtn.clicked.connect(self.addbtnFunction)
