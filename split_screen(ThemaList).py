@@ -18,20 +18,20 @@ class WindowClass(QWidget, form_class) :
         self.setGeometry(803, 300, 257, 322)
     
         #리스트 위젯 이벤트
-        # self.themlist.ItemClicked.connect(self.clickedItem)
+        # self.themelst.ItemClicked.connect(self.clickedItem)
 
-        # self.addbtn.clikked.connect(self.add_list)
+        self.addbtn.clicked.connect(self.add_list)
 
 
     def initUI(self):
         #콤보박스
-        themcomb = QComboBox(self)
+        themecomb = QComboBox(self)
  
         # #리스트 위젯
-        themlist = QListWidget(self)
-        themlist.resize(251, 300)
-        deftlst = ["테마1", "테마2", "테마3"]
-        themlist.addItems(deftlst)
+        self.themelst = QListWidget(self)
+        self.themelst.resize(251, 300)
+        defaultlst = ["테마1", "테마2", "테마3"]
+        self.themelst.addItems(defaultlst)
         
 
         # model = QStandardItemModel()
@@ -43,18 +43,18 @@ class WindowClass(QWidget, form_class) :
 
         
         #버튼
-        addbtn = QPushButton('추가', self)
-        addbtn.setCheckable(True)
+        self.addbtn = QPushButton('추가', self)
+        self.addbtn.setCheckable(True)
         
 
         
-        delbtn = QPushButton('삭제', self)
-        delbtn.setCheckable(True)
+        self.delbtn = QPushButton('삭제', self)
+        self.delbtn.setCheckable(True)
         # self.delbtn.clikked.connect(self.del_list)
         
 
-        optbtn = QPushButton('설정', self)
-        optbtn.setCheckable(True)
+        self.optbtn = QPushButton('설정', self)
+        self.optbtn.setCheckable(True)
         # self.optbtn.clikked.connect(self.option)
         
        
@@ -62,21 +62,26 @@ class WindowClass(QWidget, form_class) :
         #레이아웃
         hbox = QHBoxLayout()
         hbox.addStretch(1)
-        hbox.addWidget(addbtn)
+        hbox.addWidget(self.addbtn)
         hbox.addStretch(1)
-        hbox.addWidget(delbtn)
+        hbox.addWidget(self.delbtn)
         hbox.addStretch(3)
-        hbox.addWidget(optbtn)
+        hbox.addWidget(self.optbtn)
 
         vbox = QVBoxLayout()
-        vbox.addWidget(themlist)
+        vbox.addWidget(self.themelst)
         vbox.addLayout(hbox)
-        vbox.addWidget(themcomb)
+        vbox.addWidget(themecomb)
         
         
         self.setLayout(vbox)
         # self.setLayout(hbox)
         self.show()
+        
+    def add_list(self):
+        addItemText = self.themelst.addItems(self, str("새로운 테마"))
+        self.themelst.addItem(addItemText)
+        
     
        
 
