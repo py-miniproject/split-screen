@@ -2,6 +2,7 @@ import sys
 from PyQt5.QtGui import QStandardItem, QStandardItemModel
 from PyQt5.QtWidgets import *
 from PyQt5 import uic
+
 # from PyQt5.QtWidgets import QListWidget, QHBoxLayout, QVBoxLayout
 
 
@@ -30,8 +31,8 @@ class WindowClass(QWidget, form_class) :
         # #리스트 위젯
         self.themelst = QListWidget(self)
         self.themelst.resize(251, 300)
-        defaultlst = ["테마1", "테마2", "테마3"]
-        self.themelst.addItems(defaultlst)
+        self.defaultlst = ["테마1", "테마2", "테마3"]
+        self.themelst.addItems(self.defaultlst)
         
 
         # model = QStandardItemModel()
@@ -79,10 +80,12 @@ class WindowClass(QWidget, form_class) :
         self.show()
         
     def add_list(self):
-        addItemText = self.themelst.addItems(self, str("새로운 테마"))
-        self.themelst.addItem(addItemText)
+        self.themelst.addItem("새로운 테마")
+
+    def del_list(self):
+        self.themelst.takeItem()
         
-    
+
        
 
     #     self.addbtn.clicked.connect(self.addbtnFunction)
