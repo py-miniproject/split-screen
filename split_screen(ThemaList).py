@@ -22,6 +22,9 @@ class WindowClass(QWidget, form_class) :
         # self.themelst.ItemClicked.connect(self.clickedItem)
 
         self.addbtn.clicked.connect(self.add_list)
+        self.delbtn.clicked.connect(self.del_list)
+        
+
 
 
     def initUI(self):
@@ -83,7 +86,8 @@ class WindowClass(QWidget, form_class) :
         self.themelst.addItem("새로운 테마")
 
     def del_list(self):
-        self.themelst.takeItem()
+        selectitem = self.themelst.currentRow()
+        self.themelst.takeItem(selectitem)
         
 
        
